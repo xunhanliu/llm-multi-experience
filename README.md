@@ -31,6 +31,8 @@ python app.py
 ## 编译
 ```bash
 pyinstaller app.py
+cp index.html dist/app/_internal/
+cp cookie.pkl dist/app/_internal/  # 这句看需要复制
 ```
 
 ## 贡献

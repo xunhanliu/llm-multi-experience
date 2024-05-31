@@ -22,13 +22,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 chrome_options = Options()
 
 INDEX_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html")
+CACHE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cache")
 
 CHROME_OPTIONS_DEFAULT_USER_AGENT = "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, " \
                                     "like Gecko) Chrome/95.0.4638.69 Safari/537.36"
 CHROME_OPTIONS_ADD_ARGUMENTS = [
     "--disable-gpu",  # 谷歌文档提到需要加上这个属性来规避bug
     "--disable-dev-shm-usage",  # 大量渲染时候写入/tmp而非/dev/shm
-    "--window-size=1920,1200",
+    # "--window-size=1920,1200",
+    "--disk-cache-dir="+CACHE_PATH,  # 指定cache路径
     "--disk-cache-size=1073741824",
     "--media-cache-size=1073741824",
     "--disable-blink-features=AutomationControlled",  # 消除启动特征防止反爬
