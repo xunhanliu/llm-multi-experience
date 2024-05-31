@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多模型体验</title>
+    <style>
+        html,
+        body {
+            height: 99%;
+            margin: 0;
+        }
+        
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            height: calc( 100% - 40px);
+        }
+        
+        .flex-item {
+            width: 25%;
+            height: 100%;
+            border: 0.5px dashed lightslategray;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        
+        #file-input,
+        #text-area,
+        #send-button,
+        #save-cookie {
+            margin-left: 10px;
+            margin-top: 10px;
+            padding-top: 5px;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+        
+        #file-input {
+            background-color: #ddfb6f8c;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="flex-container">
+        <!-- <iframe id="chatgpt" src="https://chatgpt.com/" class="flex-item"></iframe> -->
+        <iframe id="chatglm" src="https://chatglm.cn/" class="flex-item"></iframe>
+        <iframe id="tiangong" src="https://www.tiangong.cn/" class="flex-item"></iframe>
+        <iframe id="doubao" src="https://www.doubao.com/" class="flex-item"></iframe>
+        <iframe id="yiyan" src="https://yiyan.baidu.com/" class="flex-item"></iframe>
+
+    </div>
+    <div style="height: 40px;">
+        <button id="save-cookie" onclick="saveCookie()">保存登录状态</button>
+        <input id="file-input" type="file" />
+        <textarea id="text-area" placeholder="请输入内容" rows="2" cols="100"></textarea>
+        <button id="send-button" onclick="sendMessage()">发送</button>
+    </div>
+    <script>
+        function sendMessage() {
+            if (["发送中", "保存中"].indexOf(document.getElementById("send-button").textContent) != -1) return;
+            document.getElementById("send-button").textContent = "发送中";
+            setTimeout(() => {
+                document.getElementById("send-button").textContent = "发送"
+            }, 3000);
+        }
+
+        function saveCookie() {
+            if (["发送中", "保存中"].indexOf(document.getElementById("send-button").textContent) != -1) return;
+            document.getElementById("send-button").textContent = "保存中";
+            setTimeout(() => {
+                document.getElementById("send-button").textContent = "发送";
+                alert("保存完毕");
+            }, 3000);
+
+        }
+    </script>
+</body>
+
+</html>

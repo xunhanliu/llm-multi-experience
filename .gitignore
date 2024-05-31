@@ -1,0 +1,6 @@
+app.spec
+build
+dist
+.idea
+cookie.pkl
+__pycache__/
